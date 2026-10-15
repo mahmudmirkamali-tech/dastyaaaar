@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Compass, Layers, Megaphone, Orbit, Route } from "lucide-react";
 import { Motif } from "@/components/atelier/motif";
 import { Card, CopyButton, Field, NumberField } from "@/components/atelier/ui";
+import { CrmBoard, Pipeline, RealKpi } from "@/components/atelier/ops";
+import { UserButton } from "@/lib/auth/gates";
 import {
   assistantIntent,
   BLOCKED_REPLY,
@@ -47,7 +49,13 @@ export function Studio() {
               ساخت مجموعهٔ اصلی، جذب انفجاری تمیز، انتشار اینستا و تلگرام
             </p>
           </div>
-          <PublishPill />
+          <div className="flex shrink-0 items-center gap-2">
+            <a href="/login" className="hidden min-h-11 items-center rounded-full border border-line px-3 text-sm sm:inline-flex">
+              ورود
+            </a>
+            <UserButton />
+            <PublishPill />
+          </div>
         </div>
       </header>
       <div className="mx-auto grid max-w-6xl gap-6 px-4 pt-4 pb-28 md:grid-cols-[13rem_minmax(0,1fr)] md:pb-10">
@@ -635,13 +643,11 @@ function Publish() {
       <div>
         <h2 className="text-3xl">نشر</h2>
         <p className="mt-2 text-sm text-pretty text-mute">
-          متن‌ها آماده‌اند. انتشار واقعی را خودت در اینستاگرام، تلگرام و ایکس می‌زنی و بعد این‌جا علامت می‌گذاری.
+          بستهٔ کپی برای اینستا و ایکس همین پایین است. ارسال واقعی تلگرام فقط از چرخهٔ تأییدشده انجام می‌شود.
         </p>
       </div>
       <DirtyBanner />
-      <Card className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h3 className="text-xl">وضعیت اپ</h3>
+      <Pipeline />
           <p className="text-sm text-mute">فقط وقتی واقعاً بالا آمد این را روشن کن.</p>
         </div>
         <button

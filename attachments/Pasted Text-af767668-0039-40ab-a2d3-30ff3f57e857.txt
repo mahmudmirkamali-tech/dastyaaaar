@@ -1,0 +1,247 @@
+# PROJECT CONTEXT — AI Content Agent + NFT
+
+## 1. Project Overview
+An existing AI-powered content creation assistant with NFT minting functionality.
+
+Goal: Evolve the existing project into a functional product with:
+- Web application
+- AI content generation
+- Telegram integration
+- Instagram integration
+- CRM
+- KPI dashboard
+
+Primary operating environment: Iran.
+Priorities: low cost, reliability, security, and incremental development.
+
+## 2. Current Project Status
+
+Based on the previous project review, the following issues were identified:
+
+1. Content generation, approval, and actual publication are not connected in a complete workflow.
+2. Content history, errors, and publication results need persistent database storage.
+3. KPI values must be calculated from actual records, not estimates.
+4. Secrets must not be exposed in frontend code or Vite environment variables.
+5. Instagram Graph API availability, permissions, and regional access need verification.
+6. Telegram Bot API is the initial publishing integration.
+7. Existing NFT minting functionality must be preserved.
+
+IMPORTANT:
+These observations come from a previous project discussion.
+Inspect the actual repository to verify the current implementation.
+Do not assume any feature is implemented until its code and behavior are verified.
+
+## 3. Core Product Workflow
+
+User enters content objective
+    ↓
+AI generates content
+    ↓
+Content is saved in database
+    ↓
+User reviews and approves
+    ↓
+Server publishes approved content to Telegram
+    ↓
+Telegram API result is recorded
+    ↓
+Database status is updated
+    ↓
+KPI dashboard displays actual results
+    ↓
+CRM records relevant leads and activities
+
+## 4. Content Data Model
+
+Inspect the existing database before making changes.
+
+Required content fields, where applicable:
+
+- id
+- user_id
+- title
+- content
+- channel
+- status
+- created_at
+- updated_at
+- scheduled_at
+- sent_at
+- external_message_id
+- error_message
+
+Required statuses:
+
+draft
+approved
+sending
+sent
+failed
+
+Rules:
+- Only approved content can be published.
+- Every publication attempt must be recorded.
+- Failed operations must retain useful error information.
+- Retries must not create duplicate publications.
+- Status changes must persist across sessions and deployments.
+
+Use migrations compatible with the existing database.
+
+## 5. Telegram Integration
+
+Implement actual Telegram Bot API integration.
+
+Requirements:
+- Server-side API calls
+- Token stored in secure environment variables
+- Configurable destination chat/channel
+- Approval validation
+- Publication result persistence
+- Telegram message ID storage
+- Failure handling
+- Duplicate-send protection
+- Safe retries
+- Clear configuration errors
+
+Never expose the bot token to frontend code.
+
+Never report a successful publication unless the API confirms success.
+
+## 6. Instagram Integration
+
+Use official Meta APIs only.
+
+Inspect the existing implementation and determine:
+- Required account type
+- Available permissions
+- Publishing capabilities
+- Available Insights
+- Access and configuration requirements
+
+Implement supported capabilities only.
+
+If external access or permissions are unavailable, keep content preparation functional and report the missing requirements.
+
+## 7. CRM
+
+Provide a practical CRM supporting:
+
+- Contacts
+- Leads
+- Customers
+- Campaigns
+- Tasks
+- Interactions
+- Tags
+- Opportunities
+- Sales pipeline
+- Lead sources
+- Follow-up status
+
+Use real records and authorized data sources.
+
+Avoid duplicate contacts and unauthorized collection of personal information.
+
+## 8. KPI Dashboard
+
+Calculate metrics from persisted database records:
+
+- Generated content count
+- Draft count
+- Approved content count
+- Successful publications
+- Failed publications
+- Publication success rate
+- Lead count
+- Conversion rate
+- AI usage and estimated cost
+- Recent errors
+- Activity over time
+
+Distinguish actual measurements from estimates.
+
+Never fabricate unavailable Instagram or Telegram analytics.
+
+## 9. Technical Constraints
+
+Inspect the actual project stack first.
+
+Preserve existing:
+- Frontend framework
+- Backend architecture
+- Database
+- Authentication
+- NFT implementation
+- Deployment configuration
+
+Do not replace existing technologies without a documented reason.
+
+Security requirements:
+- Server-side secret management
+- Authentication and authorization
+- Input validation
+- User data isolation
+- Error logging
+- Secure integration credentials
+- Protection against duplicate operations
+
+Consider service availability, payment limitations, and operating costs for a product managed from Iran.
+
+## 10. NFT
+
+Inspect the current NFT minting implementation.
+
+Preserve existing functionality.
+
+Verify transaction handling, metadata, error states, and wallet security.
+
+Never store user private keys.
+
+Do not introduce unnecessary blockchain changes.
+
+## 11. Implementation Plan
+
+Priority 1:
+Inspect repository and document actual architecture.
+
+Priority 2:
+Complete persistent content storage and approval workflow.
+
+Priority 3:
+Implement real Telegram publication.
+
+Priority 4:
+Build KPI dashboard using actual database records.
+
+Priority 5:
+Implement CRM.
+
+Priority 6:
+Implement supported Instagram capabilities.
+
+Priority 7:
+Test existing NFT functionality and deployment.
+
+## 12. Acceptance Criteria
+
+The primary workflow must work end to end:
+
+1. User submits a content objective.
+2. AI generates content.
+3. Content is saved.
+4. User approves it.
+5. Server publishes it to Telegram.
+6. Actual API response is saved.
+7. Final status persists in the database.
+8. Dashboard reflects the actual result.
+
+Automated tests may mock external APIs.
+Do not claim live integration tests unless they were actually performed.
+
+## 13. Instructions for Claude
+
+Start by inspecting the actual repository.
+
+Create or update PROJECT_STATUS.md.
+
+Identify the
